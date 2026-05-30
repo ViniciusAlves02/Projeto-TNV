@@ -1,19 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LocacoesController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\LocacaoController;
 
+// Rota da Landing Page
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/locacoes', [LocacaoController::class, 'index']);
+    return view('home');
+})->name('home');
+
+// Rota do Painel de Locações (Chama a controller para trazer os dados do banco)
+Route::get('/painel-locacoes', [LocacaoController::class, 'index'])->name('locacoes.index');
