@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('descricao');
             $table->decimal('preco_locacao', 10, 2);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -15,13 +15,29 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">Início (Landing Page)</a>
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fw-bold text-warning" href="{{ route('locacoes.index') }}">Painel Administrativo</a>
                     </li>
+
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link text-info fw-bold" href="{{ route('filmes.create') }}">+ Cadastrar Filme</a>
+                        </li>
+                        <li class="nav-item ms-2">
+                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-sm btn-outline-danger fw-bold">Sair</button>
+                            </form>
+                        </li>
+                    @else
+                        <li class="nav-item ms-2">
+                            <a class="btn btn-sm btn-light fw-bold" href="{{ route('login') }}">Entrar</a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>

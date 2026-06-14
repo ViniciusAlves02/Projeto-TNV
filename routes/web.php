@@ -1,12 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LocacaoController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\FilmeController;
+use App\Http\Controllers\LocacaoController; 
 
-// Rota da Landing Page
 Route::get('/', function () {
-    return view('home');
+    $filmes = \App\Models\Filme::all();
+    return view('home', compact('filmes'));
 })->name('home');
 
-// Rota do Painel de Locações (Chama a controller para trazer os dados do banco)
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('/login', [UserController::class, 'autenticar'])->name('login.autenticar');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/filmes/novo', [FilmeController::class, 'create'])->name('filmes.create');
+Route::post('/filmes/novo', [FilmeController::class, 'store'])->name('filmes.store');
+
 Route::get('/painel-locacoes', [LocacaoController::class, 'index'])->name('locacoes.index');
+Route::get('/filmes/alugar/{id}', [LocacaoController::class, 'mostrarTelaAlugar'])->name('locacoes.alugar');
+Route::post('/filmes/alugar', [LocacaoController::class, 'store'])->name('locacoes.store');

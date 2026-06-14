@@ -7,13 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Filme extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $table = 'filmes';
 
     protected $fillable = [
-        'titulo', 'genero', 'diretor', 'ano_lacamento', 
-        'classificacao_indicativa', 'descricao', 'preco_locacao'
+    'titulo', 
+    'genero', 
+    'diretor', 
+    'ano_lancamento',
+    'classificacao_indicativa', 
+    'descricao', 
+    'preco_locacao'
     ];
 
     public function locacoes()

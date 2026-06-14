@@ -11,14 +11,13 @@ class Locacao extends Model
     public $timestamps = true;
     protected $table = 'locacoes';
     protected $fillable = [
-        'user_id',
-        'funcionario_id',
-        'filme_id',
-        'data_locacao',
-        'data_prevista_devolucao',
-        'data_devolucao',
-        'valor_locacao',
-        'status',
+    'filme_id',
+    'user_id',
+    'funcionario_id',       
+    'data_locacao',
+    'data_devolucao',
+    'valor_locacao',
+    'status'
     ];
     public function user()
     {
